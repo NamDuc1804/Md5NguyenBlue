@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MD5-HASH🔎{NguyenBlue}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Fira Code', monospace;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: 0.5s;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00fff7;
+      width: 320px;
+      text-align: center;
+    }
+    h1 {
+      color: #00fff7;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #222;
+      color: #fff;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #00fff7;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #00cfcf;
+    }
+    .hidden {
+      display: none;
+    }
+    .admin-info {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
+      text-align: left;
+    }
+    .result {
+      margin-top: 15px;
+      color: #00ff88;
+      font-weight: bold;
+    }
+    .mode-toggle {
+      margin-top: 15px;
+      background: #555;
+      color: #fff;
+    }
+    /* Loading animation */
+    .loading {
+      display: none;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #00fff7;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 2s linear infinite;
+      margin: 10px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Mode transition */
+    .mode-transition {
+      transition: all 0.5s ease-in-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="login-box">
+    <h1>MD5-HASH🔎{NguyenBlue}</h1>
+    <div class="input-group">
+      <input type="text" id="username" placeholder="Tài khoản">
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Mật khẩu">
+    </div>
+    <div class="loading" id="loading"></div>
+    <button onclick="login()">Đăng nhập</button>
+  </div>
+
+  <div class="container hidden" id="main-box">
+    <h1>MD5-HASH🔎{NguyenBlue}</h1>
+
+    <div class="admin-info">
+      <b>Thông tin Admin:</b><br>
+      Người phát triển: <b>NguyenBlue</b><br>
+      Chức năng: PREMIUM MD5 Analyst<br>
+      Hỗ trợ: Tài xỉu, Xóc đĩa, Crash, Sicbo<br>
+      Liên hệ Zalo: <i>@0392466717</i>
+    </div>
+<audio controls autoplay>
+   <source src="https://files.catbox.moe/cubnmj.MP3"
+type="audio/mpeg">
+</audio>
+    <div class="input-group" style="margin-top:15px;">
+      <input type="text" id="md5input" placeholder="Nhập mã MD5 (32 ký tự)">
+    </div>
+    <button onclick="analyzeMD5()">Phân tích</button>
+
+    <div class="result" id="result">Kết quả sẽ hiển thị tại đây...</div>
+
+    <button class="mode-toggle" onclick="toggleMode()">Đổi giao diện màu</button>
+    <button onclick="logout()" style="margin-top: 10px; background: #ff0044;">Đăng xuất</button>
+  </div>
+
+  <script>
+    // Mặc định tài khoản/mật khẩu
+    const correctUsername = "NguyenBlue";
+    const correctPassword = "19122008";
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const loading = document.getElementById('loading');
+      
+      loading.style.display = "inline-block";  // Hiển thị loading
+      setTimeout(() => {
+        if (username === correctUsername && password === correctPassword) {
+          document.getElementById('login-box').classList.add('hidden');
+          document.getElementById('main-box').classList.remove('hidden');
+        } else {
+          alert('Sai tài khoản hoặc mật khẩu!');
+        }
+        loading.style.display = "none";  // Ẩn loading
+      }, 1500); // Giả lập thời gian đăng nhập
+    }
+
+    function logout() {
+      document.getElementById('main-box').classList.add('hidden');
+      document.getElementById('login-box').classList.remove('hidden');
+    }
+
+    function analyzeMD5() {
+      const md5 = document.getElementById('md5input').value.trim();
+      if (md5.length !== 32) {
+        document.getElementById('result').innerText = "MD5 phải đủ 32 ký tự!";
+        return;
+      }
+
+      // Tính toán giá trị từ MD5 để lấy kết quả phân tích tài xỉu
+      let hexValue = parseInt(md5.substring(0, 8), 16); // Lấy 8 ký tự đầu tiên
+      let percent = (hexValue % 100) + 1; // Tạo ra giá trị ngẫu nhiên từ 1-100%
+      
+      let result = (percent >= 50) ? "Tài" : "Xỉu"; // Xác định là "Tài" hoặc "Xỉu"
+      let suggest = percent >= 50 ? "=> NÊN THEO" : "=> KHÔNG NÊN THEO";
+
+      document.getElementById('result').innerHTML = `
+        Tỉ lệ: <span style="color:#00fff7">${percent}%</span> <br>
+        Kết quả: <span style="color:#00ff88">${result}</span> <br>
+        ${suggest}
+      `;
+    }
+
+    function toggleMode() {
+      const body = document.body;
+      const modes = [
+        {bg: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)", color: "#00fff7"},
+        {bg: "linear-gradient(135deg, #ff7e5f, #feb47b)", color: "#ff5733"},
+        {bg: "linear-gradient(135deg, #6a11cb, #2575fc)", color: "#4d79ff"},
+        {bg: "linear-gradient(135deg, #2f4f4f, #556b2f)", color: "#a9d18e"}
+      ];
+      
+      // Lấy chế độ hiện tại và chuyển sang chế độ mới
+      let currentMode = body.style.background || modes[0].bg;
+      let nextMode = modes[(modes.findIndex(mode => mode.bg === currentMode) + 1) % modes.length];
+      
+      body.style.background = nextMode.bg;
+      document.querySelectorAll('button').forEach(btn => {
+        btn.style.backgroundColor = nextMode.color;
+      });
+    }
+  </script>
+</body>
+</html>
